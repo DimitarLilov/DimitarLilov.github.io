@@ -1,0 +1,142 @@
+body {
+    background: url("../img/wallpaper.jpg") no-repeat center center fixed;
+background-size: cover;
+}
+
+.icons ul {
+  list-style-type: none;
+}
+
+.folder a {
+  color: #E0D236;
+  text-decoration: none;
+}
+
+.file a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.site a {
+  color: #FF8400;
+  text-decoration: none;
+}
+
+.icons div {
+  color: #FFFFFF;
+}
+
+.panel-heading div {
+  margin-top: -18px;
+  font-size: 15px;
+}
+
+.panel-heading div span {
+  margin-left: 5px;
+}
+
+.files-line li {
+  display: inline-block;
+  margin-right: 5%;
+  margin-bottom: 5%
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #2C3E50;
+}
+
+.container {
+  margin-top: 5px;
+  color: #fff;
+  width: 100%;
+}
+
+.fa-facebook {
+  color: #3B5998;
+}
+
+.fa-github {
+  color: #ffffff;
+}
+
+.fa-envelope {
+  color: #3498db;
+}
+
+.fa-instagram {
+  color: #CD486B;
+}
+
+.fa-skype {
+  color: #00AFF0;
+}
+
+.fa-linkedin {
+  color: #007bb6;
+}
+
+.panel-transparent {
+  background: none;
+}
+
+.panel-transparent .panel-heading {
+  background: rgba(122, 130, 136, 0.2)!important;
+}
+
+.panel-transparent .panel-body {
+  background: rgba(46, 51, 56, 0.2)!important;
+}
+.fixed-panel {
+min-height: 450px;
+max-height: 450px;
+overflow-y: scroll;
+}
+
+ol.line {
+list-style-type: none;
+padding: 1px;
+margin-left: 0;
+}
+
+ol.line > li {
+counter-increment: item;
+}
+
+ol.line > li:before {
+content: counter(item) " ";
+font-weight: bold;
+color: #3f88cb;
+float: left;
+width: 20px;
+}
+
+ol.line:first-child {
+counter-reset: item;
+}
+
+p {
+  color : #c3c7b8;
+  margin: 1px;
+}
+.bluetext{
+  color: #3f88cb;
+}
+.classtext{
+  color: #40b5a7;
+}
+.string{
+  color: #cd8f65;
+}
+.comment{
+  color: #4a933e;
+}
+
+
+.prettyprint {
+background: rgba(40, 50, 50, 0.1)!important;
+}
+
