@@ -127,7 +127,6 @@ handlers.displayTeamworkWebFolder = function (ctx) {
             ctx.link = "https://github.com/DimitarLilov/Teamwork-System";
             ctx.folder = "web"
 
-
             setPhotos(data, ctx);
 
             setFolderOpen(ctx);
@@ -185,7 +184,6 @@ handlers.displayCSharpServersFolder = function (ctx) {
             ctx.name = "C# Server";
             ctx.link = "https://github.com/DimitarLilov/HttpServer";
             ctx.folder = "servers"
-
 
             setPhotos(data, ctx);
 
