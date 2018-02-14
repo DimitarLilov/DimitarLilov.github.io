@@ -167,6 +167,65 @@ handlers.displayTicketStoreWebFolder = function (ctx) {
         }).catch(console.log(e));
 };
 
+handlers.displayServersFolder = function (ctx) {
+    setFolderOpen(ctx);
+    ctx.loadPartials({
+        header: "./templates/common/header.hbs",
+        footer: "./templates/common/footer.hbs",
+
+    }).then(function () {
+        this.partial('./templates/projects/servers/index.hbs');
+    });
+};
+
+handlers.displayCSharpServersFolder = function (ctx) {
+    gameService.getScreenshots("HttpServer")
+        .then(function (data) {
+
+            ctx.name = "C# Server";
+            ctx.link = "https://github.com/DimitarLilov/HttpServer";
+            ctx.folder = "servers"
+
+
+            setPhotos(data, ctx);
+
+            setFolderOpen(ctx);
+
+            ctx.loadPartials({
+                header: "./templates/common/header.hbs",
+                footer: "./templates/common/footer.hbs",
+                photo: "./templates/projects/photo.hbs"
+
+            }).then(function () {
+                this.partial('./templates/projects/project.hbs');
+            });
+        }).catch(console.log(e));
+};
+
+handlers.displayExpressServersFolder = function (ctx) {
+    gameService.getScreenshots("Express-Server")
+        .then(function (data) {
+
+            ctx.name = "Express Server";
+            ctx.link = "https://github.com/DimitarLilov/Express-Server";
+            ctx.folder = "servers"
+
+
+            setPhotos(data, ctx);
+
+            setFolderOpen(ctx);
+
+            ctx.loadPartials({
+                header: "./templates/common/header.hbs",
+                footer: "./templates/common/footer.hbs",
+                photo: "./templates/projects/photo.hbs"
+
+            }).then(function () {
+                this.partial('./templates/projects/project.hbs');
+            });
+        }).catch(console.log(e));
+};
+
 function setFolderOpen(ctx) {
     ctx.aboutMeFolder = "fa fa-folder fa-5x";
     ctx.projectsFolder = "fa fa-folder-open fa-5x";
