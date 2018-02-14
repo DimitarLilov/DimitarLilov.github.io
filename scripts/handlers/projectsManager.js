@@ -66,7 +66,7 @@ handlers.displaySIGameFolder = function (ctx) {
             }).then(function () {
                 this.partial('./templates/projects/project.hbs');
             });
-        }).catch(console.log(e));
+        }).catch(notifications.handleError);
 };
 
 handlers.displaySWGameFolder = function (ctx) {
