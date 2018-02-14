@@ -175,7 +175,7 @@ background: rgba(40, 50, 50, 0.1)!important;
   #notifications {
     float: right;
     position: fixed;
-    top: 5px;
+    bottom: 55px;
     right: 0;
     text-align: center;
     margin: 1em;

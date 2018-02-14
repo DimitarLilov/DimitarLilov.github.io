@@ -7,8 +7,9 @@ let notifications = (() => {
         hideLoading();
     });
 
-    function handleError(reason) {
-        showError(reason.responseJSON.description);
+    function handleError() {
+        
+        showError("Not Found");
     }
 
     function showInfo(message) {
@@ -31,11 +32,11 @@ let notifications = (() => {
     }
 
     function showLoading() {
-        $('#loading').show();
+        $('#loadingBox').show();
     }
 
     function hideLoading() {
-        $('#loading').hide();
+        $('#loadingBox').hide();
     }
 
     return {
