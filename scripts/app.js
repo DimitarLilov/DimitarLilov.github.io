@@ -27,6 +27,8 @@ $(() => {
 
         this.get('#/education', handlers.displayEducation);
 
+        this.get('#/certificates', handlers.displayCerticicatesFile);
+
         function displayHome(ctx) {
             ctx.aboutMeFolder = "fa fa-folder fa-5x";
             ctx.projectsFolder = "fa fa-folder fa-5x";
