@@ -5,7 +5,13 @@ let service = (() => {
         return requester.get(repo, `contents/screenshots`);
     }
 
+    function getCertificates(repo) {
+
+        return requester.get(repo, `contents/img/certificates`);
+    }
+
     return {
         getScreenshots,
+        getCertificates
     }
 })();

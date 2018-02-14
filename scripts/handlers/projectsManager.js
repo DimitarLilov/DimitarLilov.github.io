@@ -203,7 +203,7 @@ handlers.displayCSharpServersFolder = function (ctx) {
 };
 
 handlers.displayExpressServersFolder = function (ctx) {
-    gservice.getScreenshots("Express-Server")
+    service.getScreenshots("Express-Server")
         .then(function (data) {
 
             ctx.name = "Express Server";
