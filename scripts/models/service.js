@@ -1,4 +1,4 @@
-let gameService = (() => {
+let service = (() => {
 
     function getScreenshots(repo) {
 

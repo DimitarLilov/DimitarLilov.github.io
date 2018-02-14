@@ -23,7 +23,7 @@ handlers.displayGamesFolder = function (ctx) {
 handlers.displaySPGameFolder = function (ctx) {
 
 
-    gameService.getScreenshots("Team-Demeter")
+    service.getScreenshots("Team-Demeter")
         .then(function (data) {
 
             ctx.name = "Super Pesho";
@@ -47,7 +47,7 @@ handlers.displaySPGameFolder = function (ctx) {
 };
 
 handlers.displaySIGameFolder = function (ctx) {
-    gameService.getScreenshots("Team-Entablefine")
+    service.getScreenshots("Team-Entablefine")
         .then(function (data) {
 
             ctx.name = "Space Invaders";
@@ -70,7 +70,7 @@ handlers.displaySIGameFolder = function (ctx) {
 };
 
 handlers.displaySWGameFolder = function (ctx) {
-    gameService.getScreenshots("Team-Dantooine")
+    service.getScreenshots("Team-Dantooine")
         .then(function (data) {
 
             ctx.name = "Star Wars";
@@ -120,7 +120,7 @@ handlers.displayWebFolder = function (ctx) {
 };
 
 handlers.displayTeamworkWebFolder = function (ctx) {
-    gameService.getScreenshots("Teamwork-System")
+    service.getScreenshots("Teamwork-System")
         .then(function (data) {
 
             ctx.name = "Teamwork System";
@@ -144,7 +144,7 @@ handlers.displayTeamworkWebFolder = function (ctx) {
 };
 
 handlers.displayTicketStoreWebFolder = function (ctx) {
-    gameService.getScreenshots("Team-Dragonfruit")
+    service.getScreenshots("Team-Dragonfruit")
         .then(function (data) {
 
             ctx.name = "Ticket Store";
@@ -179,7 +179,7 @@ handlers.displayServersFolder = function (ctx) {
 };
 
 handlers.displayCSharpServersFolder = function (ctx) {
-    gameService.getScreenshots("HttpServer")
+    service.getScreenshots("HttpServer")
         .then(function (data) {
 
             ctx.name = "C# Server";
@@ -203,7 +203,7 @@ handlers.displayCSharpServersFolder = function (ctx) {
 };
 
 handlers.displayExpressServersFolder = function (ctx) {
-    gameService.getScreenshots("Express-Server")
+    gservice.getScreenshots("Express-Server")
         .then(function (data) {
 
             ctx.name = "Express Server";

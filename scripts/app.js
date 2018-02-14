@@ -25,6 +25,8 @@ $(() => {
         this.get('#/projects/servers/csharp', handlers.displayCSharpServersFolder);
         this.get('#/projects/servers/express', handlers.displayExpressServersFolder);
 
+        this.get('#/education', handlers.displayEducation);
+
         function displayHome(ctx) {
             ctx.aboutMeFolder = "fa fa-folder fa-5x";
             ctx.projectsFolder = "fa fa-folder fa-5x";
