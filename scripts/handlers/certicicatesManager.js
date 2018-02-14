@@ -26,15 +26,16 @@ function setFolderOpen(ctx) {
 
 function setPhotos(data, ctx) {
     let certificates = [];
-
+console.log(data);
     for (let d of data) {
         let name = d.name.split('.')[0];
         let photo = {
             id: name,
-            name: name,
+            name: "",
             url: d.download_url
         }
-        photos.push(photo);
+        certificates.push(photo);
     }
+    console.log(certificates);
     ctx.certificates = certificates;
 }
