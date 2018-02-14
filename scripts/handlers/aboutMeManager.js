@@ -21,7 +21,7 @@ handlers.displayAboutMe = function (ctx) {
 
     ctx.id = "Photo";
     ctx.name = "Photo.jpg";
-    ctx.url = "https://raw.githubusercontent.com/DimitarLilov/DimitarLilov.github.io/master/img/I.jpg";
+    ctx.url = "https://raw.githubusercontent.com/DimitarLilov/DimitarLilov.github.io/master/images/I.jpg";
 
 
     ctx.loadPartials({

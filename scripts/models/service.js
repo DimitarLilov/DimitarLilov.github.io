@@ -7,7 +7,7 @@ let service = (() => {
 
     function getCertificates(repo) {
 
-        return requester.get(repo, `contents/img/certificates`);
+        return requester.get(repo, `contents/images/certificates`);
     }
 
     return {
