@@ -8,7 +8,7 @@ background-size: cover;
 }
 
 .folder a {
-  color: #E0D236;
+  color: #ffe78f;
   text-decoration: none;
 }
 
@@ -31,6 +31,11 @@ background-size: cover;
   font-size: 15px;
 }
 
+.panel-body {
+  width: 979.75px;
+  height: 506.45px;
+}
+
 .panel-heading div span {
   margin-left: 5px;
 }
@@ -42,6 +47,8 @@ background-size: cover;
 }
 
 .footer {
+  opacity: 0.7;
+  filter: alpha(opacity=50);
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -81,6 +88,10 @@ background-size: cover;
 
 .panel-transparent {
   background: none;
+}
+
+.panel-heading {
+  background: rgba(122, 130, 136, 0.2)!important;
 }
 
 .panel-transparent .panel-heading {
@@ -161,3 +172,8 @@ background: rgba(40, 50, 50, 0.1)!important;
   z-index:100;  
   }
   
+  .photo{
+    width:"90px";
+    height:"70px";
+  }
+
