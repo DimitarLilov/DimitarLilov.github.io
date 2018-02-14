@@ -1,8 +1,5 @@
 handlers.displayProjectsFolder = function (ctx) {
-    ctx.aboutMeFolder = "fa fa-folder fa-5x";
-    ctx.projectsFolder = "fa fa-folder-open fa-5x";
-    ctx.educationFolder = "fa fa-folder fa-5x";
-    ctx.certificatesFolder = "fa fa-folder fa-5x";
+    setFolderOpen(ctx);
     ctx.loadPartials({
         header: "./templates/common/header.hbs",
         footer: "./templates/common/footer.hbs",
@@ -13,10 +10,7 @@ handlers.displayProjectsFolder = function (ctx) {
 };
 
 handlers.displayGamesFolder = function (ctx) {
-    ctx.aboutMeFolder = "fa fa-folder fa-5x";
-    ctx.projectsFolder = "fa fa-folder-open fa-5x";
-    ctx.educationFolder = "fa fa-folder fa-5x";
-    ctx.certificatesFolder = "fa fa-folder fa-5x";
+    setFolderOpen(ctx);
     ctx.loadPartials({
         header: "./templates/common/header.hbs",
         footer: "./templates/common/footer.hbs",
@@ -32,29 +26,21 @@ handlers.displaySPGameFolder = function (ctx) {
     gameService.getScreenshots("Team-Demeter")
         .then(function (data) {
 
-            let photos = [];
-            for (let d of data) {
-                let photo = {
-                    name: d.name,
-                    url: d.download_url
-                }
-                photos.push(photo);
-            }
-            ctx.photos = photos;
-
             ctx.name = "Super Pesho";
             ctx.link = "https://github.com/DimitarLilov/Team-Demeter";
-            ctx.aboutMeFolder = "fa fa-folder fa-5x";
-            ctx.projectsFolder = "fa fa-folder-open fa-5x";
-            ctx.educationFolder = "fa fa-folder fa-5x";
-            ctx.certificatesFolder = "fa fa-folder fa-5x";
+            ctx.folder = "games"
+
+            setPhotos(data, ctx);
+
+            setFolderOpen(ctx);
+
             ctx.loadPartials({
                 header: "./templates/common/header.hbs",
                 footer: "./templates/common/footer.hbs",
                 photo: "./templates/projects/photo.hbs"
 
             }).then(function () {
-                this.partial('./templates/projects/games/game.hbs');
+                this.partial('./templates/projects/project.hbs');
             });
         }).catch(console.log(e));
 
@@ -64,29 +50,21 @@ handlers.displaySIGameFolder = function (ctx) {
     gameService.getScreenshots("Team-Entablefine")
         .then(function (data) {
 
-            let photos = [];
-            for (let d of data) {
-                let photo = {
-                    name: d.name,
-                    url: d.download_url
-                }
-                photos.push(photo);
-            }
-            ctx.photos = photos;
-
             ctx.name = "Space Invaders";
             ctx.link = "https://github.com/DimitarLilov/Team-Entablefine";
-            ctx.aboutMeFolder = "fa fa-folder fa-5x";
-            ctx.projectsFolder = "fa fa-folder-open fa-5x";
-            ctx.educationFolder = "fa fa-folder fa-5x";
-            ctx.certificatesFolder = "fa fa-folder fa-5x";
+            ctx.folder = "games"
+
+            setPhotos(data, ctx);
+
+            setFolderOpen(ctx);
+
             ctx.loadPartials({
                 header: "./templates/common/header.hbs",
                 footer: "./templates/common/footer.hbs",
                 photo: "./templates/projects/photo.hbs"
 
             }).then(function () {
-                this.partial('./templates/projects/games/game.hbs');
+                this.partial('./templates/projects/project.hbs');
             });
         }).catch(console.log(e));
 };
@@ -95,29 +73,21 @@ handlers.displaySWGameFolder = function (ctx) {
     gameService.getScreenshots("Team-Dantooine")
         .then(function (data) {
 
-            let photos = [];
-            for (let d of data) {
-                let photo = {
-                    name: d.name,
-                    url: d.download_url
-                }
-                photos.push(photo);
-            }
-            ctx.photos = photos;
-
             ctx.name = "Star Wars";
             ctx.link = "https://github.com/DimitarLilov/Team-Dantooine";
-            ctx.aboutMeFolder = "fa fa-folder fa-5x";
-            ctx.projectsFolder = "fa fa-folder-open fa-5x";
-            ctx.educationFolder = "fa fa-folder fa-5x";
-            ctx.certificatesFolder = "fa fa-folder fa-5x";
+            ctx.folder = "games"
+
+            setPhotos(data, ctx);
+
+            setFolderOpen(ctx);
+
             ctx.loadPartials({
                 header: "./templates/common/header.hbs",
                 footer: "./templates/common/footer.hbs",
                 photo: "./templates/projects/photo.hbs"
 
             }).then(function () {
-                this.partial('./templates/projects/games/game.hbs');
+                this.partial('./templates/projects/project.hbs');
             });
         }).catch(console.log(e));
 };
@@ -125,16 +95,96 @@ handlers.displaySWGameFolder = function (ctx) {
 handlers.displayRPGGameFolder = function (ctx) {
     ctx.name = "RPG Game";
     ctx.link = "https://github.com/EntityFrameworkWorkGroup/RpgGame";
-    ctx.aboutMeFolder = "fa fa-folder fa-5x";
-    ctx.projectsFolder = "fa fa-folder-open fa-5x";
-    ctx.educationFolder = "fa fa-folder fa-5x";
-    ctx.certificatesFolder = "fa fa-folder fa-5x";
+    ctx.folder = "games"
+
+    setFolderOpen(ctx);
     ctx.loadPartials({
         header: "./templates/common/header.hbs",
         footer: "./templates/common/footer.hbs",
         photo: "./templates/projects/photo.hbs"
 
     }).then(function () {
-        this.partial('./templates/projects/games/game.hbs');
+        this.partial('./templates/projects/project.hbs');
     });
 };
+
+handlers.displayWebFolder = function (ctx) {
+    setFolderOpen(ctx);
+    ctx.loadPartials({
+        header: "./templates/common/header.hbs",
+        footer: "./templates/common/footer.hbs",
+
+    }).then(function () {
+        this.partial('./templates/projects/web/index.hbs');
+    });
+};
+
+handlers.displayTeamworkWebFolder = function (ctx) {
+    gameService.getScreenshots("Teamwork-System")
+        .then(function (data) {
+
+            ctx.name = "Teamwork System";
+            ctx.link = "https://github.com/DimitarLilov/Teamwork-System";
+            ctx.folder = "web"
+
+
+            setPhotos(data, ctx);
+
+            setFolderOpen(ctx);
+
+            ctx.loadPartials({
+                header: "./templates/common/header.hbs",
+                footer: "./templates/common/footer.hbs",
+                photo: "./templates/projects/photo.hbs"
+
+            }).then(function () {
+                this.partial('./templates/projects/project.hbs');
+            });
+        }).catch(console.log(e));
+};
+
+handlers.displayTicketStoreWebFolder = function (ctx) {
+    gameService.getScreenshots("Team-Dragonfruit")
+        .then(function (data) {
+
+            ctx.name = "Ticket Store";
+            ctx.link = "https://github.com/DimitarLilov/Team-Dragonfruit";
+            ctx.folder = "web"
+
+
+            setPhotos(data, ctx);
+
+            setFolderOpen(ctx);
+
+            ctx.loadPartials({
+                header: "./templates/common/header.hbs",
+                footer: "./templates/common/footer.hbs",
+                photo: "./templates/projects/photo.hbs"
+
+            }).then(function () {
+                this.partial('./templates/projects/project.hbs');
+            });
+        }).catch(console.log(e));
+};
+
+function setFolderOpen(ctx) {
+    ctx.aboutMeFolder = "fa fa-folder fa-5x";
+    ctx.projectsFolder = "fa fa-folder-open fa-5x";
+    ctx.educationFolder = "fa fa-folder fa-5x";
+    ctx.certificatesFolder = "fa fa-folder fa-5x";
+}
+
+function setPhotos(data, ctx) {
+    let photos = [];
+
+    for (let d of data) {
+        let name = d.name.split('.')[0];
+        let photo = {
+            id: name,
+            name: "screenshot_" + name,
+            url: d.download_url
+        }
+        photos.push(photo);
+    }
+    ctx.photos = photos;
+}
