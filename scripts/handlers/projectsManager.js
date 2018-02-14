@@ -42,7 +42,7 @@ handlers.displaySPGameFolder = function (ctx) {
             }).then(function () {
                 this.partial('./templates/projects/project.hbs');
             });
-        }).catch(console.log(e));
+        }).catch(notifications.handleError);
 
 };
 
@@ -89,7 +89,7 @@ handlers.displaySWGameFolder = function (ctx) {
             }).then(function () {
                 this.partial('./templates/projects/project.hbs');
             });
-        }).catch(console.log(e));
+        }).catch(notifications.handleError);
 };
 
 handlers.displayRPGGameFolder = function (ctx) {
@@ -139,7 +139,7 @@ handlers.displayTeamworkWebFolder = function (ctx) {
             }).then(function () {
                 this.partial('./templates/projects/project.hbs');
             });
-        }).catch(console.log(e));
+        }).catch(notifications.handleError);
 };
 
 handlers.displayTicketStoreWebFolder = function (ctx) {
@@ -163,7 +163,7 @@ handlers.displayTicketStoreWebFolder = function (ctx) {
             }).then(function () {
                 this.partial('./templates/projects/project.hbs');
             });
-        }).catch(console.log(e));
+        }).catch(notifications.handleError);
 };
 
 handlers.displayServersFolder = function (ctx) {
@@ -197,7 +197,7 @@ handlers.displayCSharpServersFolder = function (ctx) {
             }).then(function () {
                 this.partial('./templates/projects/project.hbs');
             });
-        }).catch(console.log(e));
+        }).catch(notifications.handleError);
 };
 
 handlers.displayExpressServersFolder = function (ctx) {
@@ -221,7 +221,7 @@ handlers.displayExpressServersFolder = function (ctx) {
             }).then(function () {
                 this.partial('./templates/projects/project.hbs');
             });
-        }).catch(console.log(e));
+        }).catch(notifications.handleError);
 };
 
 function setFolderOpen(ctx) {

@@ -27,5 +27,5 @@ handlers.displayCerticicatesFile = function (ctx) {
             }).then(function () {
                 this.partial('./templates/certificates/index.hbs');
             });
-        }).catch(console.log(e));
+        }).catch(notifications.handleError);
 };
