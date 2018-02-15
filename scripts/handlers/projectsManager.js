@@ -1,5 +1,6 @@
 handlers.displayProjectsFolder = function (ctx) {
     setFolderOpen(ctx);
+
     ctx.loadPartials({
         header: "./templates/common/header.hbs",
         footer: "./templates/common/footer.hbs",
@@ -11,6 +12,7 @@ handlers.displayProjectsFolder = function (ctx) {
 
 handlers.displayGamesFolder = function (ctx) {
     setFolderOpen(ctx);
+
     ctx.loadPartials({
         header: "./templates/common/header.hbs",
         footer: "./templates/common/footer.hbs",
@@ -21,29 +23,19 @@ handlers.displayGamesFolder = function (ctx) {
 };
 
 handlers.displaySPGameFolder = function (ctx) {
-
-
     service.getScreenshots("Team-Demeter")
         .then(function (data) {
 
             ctx.name = "Super Pesho";
             ctx.link = "https://github.com/DimitarLilov/Team-Demeter";
-            ctx.folder = "games"
+            ctx.folder = "games";
 
             setPhotos(data, ctx);
 
             setFolderOpen(ctx);
 
-            ctx.loadPartials({
-                header: "./templates/common/header.hbs",
-                footer: "./templates/common/footer.hbs",
-                photo: "./templates/projects/photo.hbs"
-
-            }).then(function () {
-                this.partial('./templates/projects/project.hbs');
-            });
+            renderProject(ctx);
         }).catch(notifications.handleError);
-
 };
 
 handlers.displaySIGameFolder = function (ctx) {
@@ -52,20 +44,13 @@ handlers.displaySIGameFolder = function (ctx) {
 
             ctx.name = "Space Invaders";
             ctx.link = "https://github.com/DimitarLilov/Team-Entablefine";
-            ctx.folder = "games"
+            ctx.folder = "games";
 
             setPhotos(data, ctx);
 
             setFolderOpen(ctx);
 
-            ctx.loadPartials({
-                header: "./templates/common/header.hbs",
-                footer: "./templates/common/footer.hbs",
-                photo: "./templates/projects/photo.hbs"
-
-            }).then(function () {
-                this.partial('./templates/projects/project.hbs');
-            });
+            renderProject(ctx);
         }).catch(notifications.handleError);
 };
 
@@ -75,37 +60,23 @@ handlers.displaySWGameFolder = function (ctx) {
 
             ctx.name = "Star Wars";
             ctx.link = "https://github.com/DimitarLilov/Team-Dantooine";
-            ctx.folder = "games"
+            ctx.folder = "games";
 
             setPhotos(data, ctx);
 
             setFolderOpen(ctx);
 
-            ctx.loadPartials({
-                header: "./templates/common/header.hbs",
-                footer: "./templates/common/footer.hbs",
-                photo: "./templates/projects/photo.hbs"
-
-            }).then(function () {
-                this.partial('./templates/projects/project.hbs');
-            });
+            renderProject(ctx);
         }).catch(notifications.handleError);
 };
 
 handlers.displayRPGGameFolder = function (ctx) {
     ctx.name = "RPG Game";
     ctx.link = "https://github.com/EntityFrameworkWorkGroup/RpgGame";
-    ctx.folder = "games"
+    ctx.folder = "games";
 
     setFolderOpen(ctx);
-    ctx.loadPartials({
-        header: "./templates/common/header.hbs",
-        footer: "./templates/common/footer.hbs",
-        photo: "./templates/projects/photo.hbs"
-
-    }).then(function () {
-        this.partial('./templates/projects/project.hbs');
-    });
+    renderProject(ctx);
 };
 
 handlers.displayWebFolder = function (ctx) {
@@ -125,20 +96,13 @@ handlers.displayTeamworkWebFolder = function (ctx) {
 
             ctx.name = "Teamwork System";
             ctx.link = "https://github.com/DimitarLilov/Teamwork-System";
-            ctx.folder = "web"
+            ctx.folder = "web";
 
             setPhotos(data, ctx);
 
             setFolderOpen(ctx);
 
-            ctx.loadPartials({
-                header: "./templates/common/header.hbs",
-                footer: "./templates/common/footer.hbs",
-                photo: "./templates/projects/photo.hbs"
-
-            }).then(function () {
-                this.partial('./templates/projects/project.hbs');
-            });
+            renderProject(ctx);
         }).catch(notifications.handleError);
 };
 
@@ -148,21 +112,14 @@ handlers.displayTicketStoreWebFolder = function (ctx) {
 
             ctx.name = "Ticket Store";
             ctx.link = "https://github.com/DimitarLilov/Team-Dragonfruit";
-            ctx.folder = "web"
+            ctx.folder = "web";
 
 
             setPhotos(data, ctx);
 
             setFolderOpen(ctx);
 
-            ctx.loadPartials({
-                header: "./templates/common/header.hbs",
-                footer: "./templates/common/footer.hbs",
-                photo: "./templates/projects/photo.hbs"
-
-            }).then(function () {
-                this.partial('./templates/projects/project.hbs');
-            });
+            renderProject(ctx);
         }).catch(notifications.handleError);
 };
 
@@ -183,20 +140,13 @@ handlers.displayCSharpServersFolder = function (ctx) {
 
             ctx.name = "C# Server";
             ctx.link = "https://github.com/DimitarLilov/HttpServer";
-            ctx.folder = "servers"
+            ctx.folder = "servers";
 
             setPhotos(data, ctx);
 
             setFolderOpen(ctx);
 
-            ctx.loadPartials({
-                header: "./templates/common/header.hbs",
-                footer: "./templates/common/footer.hbs",
-                photo: "./templates/projects/photo.hbs"
-
-            }).then(function () {
-                this.partial('./templates/projects/project.hbs');
-            });
+            renderProject(ctx);            
         }).catch(notifications.handleError);
 };
 
@@ -206,21 +156,13 @@ handlers.displayExpressServersFolder = function (ctx) {
 
             ctx.name = "Express Server";
             ctx.link = "https://github.com/DimitarLilov/Express-Server";
-            ctx.folder = "servers"
-
+            ctx.folder = "servers";
 
             setPhotos(data, ctx);
 
             setFolderOpen(ctx);
 
-            ctx.loadPartials({
-                header: "./templates/common/header.hbs",
-                footer: "./templates/common/footer.hbs",
-                photo: "./templates/projects/photo.hbs"
-
-            }).then(function () {
-                this.partial('./templates/projects/project.hbs');
-            });
+            renderProject(ctx);
         }).catch(notifications.handleError);
 };
 
@@ -244,4 +186,15 @@ function setPhotos(data, ctx) {
         photos.push(photo);
     }
     ctx.photos = photos;
+}
+
+function renderProject(ctx){
+    ctx.loadPartials({
+        header: "./templates/common/header.hbs",
+        footer: "./templates/common/footer.hbs",
+        photo: "./templates/common/photo.hbs"
+
+    }).then(function () {
+        this.partial('./templates/projects/project.hbs');
+    });
 }

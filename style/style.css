@@ -196,9 +196,6 @@ background: rgba(40, 50, 50, 0.1)!important;
 #loadingBox>span {
     background: #7CB3E9;
 }
-#infoBox>span {
-    background: #393;
-}
 #errorBox>span {
     background: #F50;
 }

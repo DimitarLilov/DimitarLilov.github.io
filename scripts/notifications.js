@@ -12,16 +12,6 @@ let notifications = (() => {
         showError("Not Found");
     }
 
-    function showInfo(message) {
-        let infoBox = $('#infoBox');
-        infoBox.empty();
-        let span = $('<span>').text(message);
-        infoBox.append(span);
-        infoBox.show();
-        infoBox.click((event) => $(event.target).hide());
-        setTimeout(() => infoBox.fadeOut(), 3000);
-    }
-
     function showError(message) {
         let errorBox = $('#errorBox');
         errorBox.empty();
@@ -40,7 +30,6 @@ let notifications = (() => {
     }
 
     return {
-        showInfo,
         showError,
         handleError
     }

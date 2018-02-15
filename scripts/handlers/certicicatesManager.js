@@ -22,7 +22,7 @@ handlers.displayCerticicatesFile = function (ctx) {
             ctx.loadPartials({
                 header: "./templates/common/header.hbs",
                 footer: "./templates/common/footer.hbs",
-                photo: "./templates/projects/photo.hbs"
+                photo: "./templates/common/photo.hbs"
 
             }).then(function () {
                 this.partial('./templates/certificates/index.hbs');
