@@ -19,8 +19,8 @@ $(() => {
 
         this.get('#/projects/web', handlers.displayWebFolder);
         this.get('#/projects/web/teamwork', handlers.displayTeamworkWebFolder);
-        this.get('#/projects/web/ticketstoreh', handlers.displayTicketStoreHWebFolder);
         this.get('#/projects/web/ticketstore', handlers.displayTicketStoreWebFolder);
+        this.get('#/projects/web/handlebars/ticketstore', handlers.displayTicketStoreHWebFolder);
 
         this.get('#/projects/servers', handlers.displayServersFolder);
         this.get('#/projects/servers/csharp', handlers.displayCSharpServersFolder);
