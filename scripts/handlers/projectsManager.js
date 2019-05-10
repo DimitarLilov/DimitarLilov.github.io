@@ -123,7 +123,7 @@ handlers.displayTicketStoreHWebFolder = function (ctx) {
         }).catch(notifications.handleError);
 };
 
-handlers.displayTicketStoreHWebFolder = function (ctx) {
+handlers.displayTicketStoreWebFolder = function (ctx) {
     service.getScreenshots("Ticket-Store")
         .then(function (data) {
 
