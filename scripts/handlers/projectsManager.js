@@ -106,12 +106,29 @@ handlers.displayTeamworkWebFolder = function (ctx) {
         }).catch(notifications.handleError);
 };
 
-handlers.displayTicketStoreWebFolder = function (ctx) {
+handlers.displayTicketStoreHWebFolder = function (ctx) {
     service.getScreenshots("Team-Dragonfruit")
         .then(function (data) {
 
-            ctx.name = "Ticket Store";
+            ctx.name = "Ticket Store Handlebars";
             ctx.link = "https://github.com/DimitarLilov/Team-Dragonfruit";
+            ctx.folder = "web";
+
+
+            setPhotos(data, ctx);
+
+            setFolderOpen(ctx);
+
+            renderProject(ctx);
+        }).catch(notifications.handleError);
+};
+
+handlers.displayTicketStoreHWebFolder = function (ctx) {
+    service.getScreenshots("Ticket-Store")
+        .then(function (data) {
+
+            ctx.name = "Ticket Store Angular";
+            ctx.link = "https://github.com/DimitarLilov/Ticket-Store";
             ctx.folder = "web";
 
 
