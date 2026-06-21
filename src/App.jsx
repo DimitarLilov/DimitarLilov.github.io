@@ -127,6 +127,31 @@ function Icon({ name, size = 22, className = "" }) {
   });
 }
 
+/* DimitarOS logomark — "{DL}" mark, reused for the menu bar and as the
+   site favicon (public/favicon.svg mirrors this exact design). */
+function LogoMark({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 64 64" className="logo-mark">
+      <defs>
+        <linearGradient id="logoGrad" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#5b8def" />
+          <stop offset="1" stopColor="#5cd6c0" />
+        </linearGradient>
+      </defs>
+      <rect x="4" y="4" width="56" height="56" rx="14" fill="#0c1a30" />
+      <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#logoGrad)" fillOpacity="0.16" />
+      <rect x="4.75" y="4.75" width="54.5" height="54.5" rx="13.25" fill="none" stroke="url(#logoGrad)" strokeWidth="1.2" strokeOpacity="0.55" />
+      <text
+        x="32" y="41" textAnchor="middle"
+        fontFamily="'SF Mono','JetBrains Mono','Fira Code',ui-monospace,Menlo,Consolas,monospace"
+        fontSize="22" fontWeight="700" fill="url(#logoGrad)"
+      >
+        {"{DL}"}
+      </text>
+    </svg>
+  );
+}
+
 /* ---------------------------------------------------------------------------
    App registry — single source of truth for both Desktop icons / Dock
    and the iOS Home Screen grid.
@@ -842,7 +867,7 @@ function MenuBar({ clock }) {
   return (
     <div className="menubar">
       <div className="menubar-left">
-        <span className="menubar-logo"></span>
+        <LogoMark size={16} />
         <span className="menubar-app">DimitarOS</span>
         <span className="menubar-item">File</span>
         <span className="menubar-item">Edit</span>
@@ -1164,11 +1189,7 @@ html, body {
   z-index: 5000;
 }
 .menubar-left { display: flex; align-items: center; gap: 16px; }
-.menubar-logo {
-  width: 13px; height: 13px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--mac-accent), #5cd6c0);
-  display: inline-block;
-}
+.logo-mark { display: block; flex-shrink: 0; border-radius: 4px; }
 .menubar-app { font-weight: 700; }
 .menubar-item { color: var(--mac-text-dim); cursor: default; }
 .menubar-right { display: flex; align-items: center; gap: 14px; font-variant-numeric: tabular-nums; }
