@@ -603,13 +603,41 @@ function FileGridItem({ icon, label, onOpen, kind = "folder" }) {
 }
 
 function PhotoThumb({ url, name }) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
-    <a className="fs-item fs-photo" href={url} target="_blank" rel="noreferrer">
-      <div className="fs-icon fs-icon-photo">
-        <img src={url} alt={name} loading="lazy" />
-      </div>
-      <div className="fs-label">{name}</div>
-    </a>
+    <>
+      <button className="fs-item fs-photo" onClick={() => setOpen(true)}>
+        <div className="fs-icon fs-icon-photo">
+          <img src={url} alt={name} loading="lazy" />
+        </div>
+        <div className="fs-label">{name}</div>
+      </button>
+      {open && (
+        <div className="quicklook-overlay" onClick={() => setOpen(false)}>
+          <div className="quicklook-box" onClick={(e) => e.stopPropagation()}>
+            <div className="quicklook-bar">
+              <span className="quicklook-name">{name}</span>
+              <button className="quicklook-close" onClick={() => setOpen(false)} aria-label="Close preview">
+                <Icon name="close" size={13} />
+              </button>
+            </div>
+            <div className="quicklook-imgwrap">
+              <img src={url} alt={name} />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -940,7 +968,7 @@ function WindowWithNav({ win, app, onClose, onFocus, onMinimize, onMaximize, onM
         )}
         <span className="window-toolbar-title">{title}</span>
       </div>
-      <AppBody appId={win.appId} nav={nav} />
+      <AppBody key={nav.current.view} appId={win.appId} nav={nav} />
     </MacWindow>
   );
 }
@@ -1000,7 +1028,7 @@ function IOSAppSheet({ app, onClose }) {
           <Icon name="close" size={14} />
         </button>
       </div>
-      <div className="ios-sheet-body">
+      <div className="ios-sheet-body" key={nav.current.view}>
         <AppBody appId={app.id} nav={nav} />
       </div>
     </div>
@@ -1240,7 +1268,7 @@ html, body {
 }
 
 .mac-window-body {
-  flex: 1; overflow: auto; display: flex; flex-direction: column;
+  flex: 1; overflow: hidden; display: flex; flex-direction: column;
 }
 
 .window-toolbar {
@@ -1330,6 +1358,68 @@ html, body {
 .fs-label { font-size: 12px; text-align: center; line-height: 1.25; word-break: break-word; }
 .fs-loading { color: var(--mac-text-dim); font-size: 13px; padding: 20px; grid-column: 1 / -1; }
 
+/* Quick Look-style photo preview */
+.quicklook-overlay {
+  position: fixed; inset: 0;
+  z-index: 20000;
+  background: rgba(8,11,18,0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px;
+  animation: ql-fade-in 0.15s ease;
+}
+@keyframes ql-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.quicklook-box {
+  display: flex; flex-direction: column;
+  max-width: min(90vw, 920px);
+  max-height: 86vh;
+  background: var(--mac-glass-strong);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid var(--mac-border);
+  border-radius: 14px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+  overflow: hidden;
+  animation: ql-pop-in 0.18s cubic-bezier(.2,.9,.3,1.2);
+}
+@keyframes ql-pop-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.quicklook-bar {
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--mac-border);
+}
+.quicklook-name { font-size: 13px; font-weight: 600; color: var(--mac-text-dim); }
+.quicklook-close {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--mac-border);
+  color: var(--mac-text);
+  border-radius: 6px;
+  width: 26px; height: 26px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.quicklook-close:hover { background: rgba(255,255,255,0.16); }
+.quicklook-imgwrap {
+  flex: 1; min-height: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.3);
+  padding: 16px;
+  overflow: auto;
+}
+.quicklook-imgwrap img {
+  max-width: 100%; max-height: 78vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
 /* code editor look */
 .code-view { padding: 0; }
 .code-editor {
@@ -1338,8 +1428,6 @@ html, body {
   line-height: 1.65;
   padding: 18px 20px;
   background: rgba(10,14,22,0.4);
-  flex: 1;
-  overflow: auto;
   white-space: pre;
 }
 .code-line { display: flex; }
@@ -1434,7 +1522,7 @@ html, body {
 }
 .ios-sheet-close { color: var(--mac-text-dim); font-size: 14px; }
 .ios-sheet-title { font-size: 16px; font-weight: 700; }
-.ios-sheet-body { flex: 1; overflow-y: auto; }
+.ios-sheet-body { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
 .ios-sheet-body .fs-grid { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); }
 .ios-sheet-body .code-editor { font-size: 12px; padding: 14px 14px; }
 
